@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understaning setInterval</title>
+  </head>
+  <body>
+    <h1>TIMER.....</h1>
+    <h3 id="val">start your timer</h3>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    let count = 0;
+    let intervalId; //declare this intervalId first and outside of block to make it global
+    function startTimer() {
+      if (intervalId) {
+        clearInterval(intervalId); //Keep in mind that for using clearInterval there is intervalId that refer to the setInterval
+        //add if condition to check for intervalId if it exists then clear itotherwise set interval
+      }
+      intervalId = setInterval(changeTime, 1000);
+      console.warn("Started");
+    }
+
+    function changeTime() {
+      if (count < 60) {
+        count++;
+        document.getElementById("val").innerHTML = count;
+      } else {
+        count = 0;
+      }
+      console.log(count);
+    }
+    function stopTimer() {
+      clearInterval(intervalId);
+      console.log("stopped");
+    }
+
+    document.getElementById("start").addEventListener("click", startTimer);
+    document.getElementById("stop").addEventListener("click", stopTimer);
+  </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Changing Background Color</title>
+  </head>
+  <body>
+    <h1>Changing background color</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    //Generate Random Color
+    const randomColor = function () {
+      const hex = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    };
+
+    var intervalId;
+    document.getElementById('start').onclick = function () {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+      intervalId = setInterval(changeColor, 1000);
+    };
+
+    document.getElementById('stop').onclick = function () {
+      clearInterval(intervalId);
+    };
+    
+
+    function changeColor() {
+      document.body.style.backgroundColor = randomColor();
+    }
+
+   
+    
+  </script>
+</html>
+
+ <!-- How to use clearInterval -->
+  
+<!-- var intervalId;
+on.onclick = function() {
+    if (intervalId) {
+        clearInterval(intervalId);
+    }
+    intervalId = setInterval(fontChange, 500);
+};
+
+off.onclick = function() {
+    clearInterval(intervalId);
+}; -->
