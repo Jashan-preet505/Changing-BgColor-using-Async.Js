@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let p1 = new Promise((resolve,reject) =>{
+        resolve({
+            then(resolve,reject){
+                console.log("thenable object")
+                resolve("resolved")
+            }
+        })
+    })
+
+    p1
+    .then((val)=>{           //resolved
+        console.log(val)
+    })
+    .catch((err)=>{          //rejected
+        console.log(err)
+    })
+    .finally(()=>{           //finally
+        console.log("finally")
+    })
+</script>
+</html>
